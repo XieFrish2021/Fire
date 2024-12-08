@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.fire"
-version = System.getenv("version")
+version = "1.21.1-R0.1-SNAPSHOT"
 
 val paperMavenPublicUrl = "https://repo.papermc.io/repository/maven-public/"
 
