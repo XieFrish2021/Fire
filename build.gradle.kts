@@ -4,6 +4,9 @@ plugins {
     id("io.papermc.paperweight.patcher") version "1.7.3"
 }
 
+group = "dev.fire"
+version = System.getenv("version")
+
 val paperMavenPublicUrl = "https://repo.papermc.io/repository/maven-public/"
 
 repositories {
@@ -118,4 +121,3 @@ publishing {
         }
     }
 }
-
