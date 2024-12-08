@@ -1,0 +1,125 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: xuyin <1573880184@qq.com>
+Date: Sun, 8 Dec 2024 21:32:39 +0800
+Subject: [PATCH] Removed Folia supported.
+
+
+diff --git a/src/main/java/io/papermc/paper/plugin/provider/configuration/PaperPluginMeta.java b/src/main/java/io/papermc/paper/plugin/provider/configuration/PaperPluginMeta.java
+index fb7c6621e2805f4339c255f6c2e02c55ff4c502e..3601edd81a9d858d2da41ec89443e22431a46fc7 100644
+--- a/src/main/java/io/papermc/paper/plugin/provider/configuration/PaperPluginMeta.java
++++ b/src/main/java/io/papermc/paper/plugin/provider/configuration/PaperPluginMeta.java
+@@ -252,12 +252,14 @@ public class PaperPluginMeta implements PluginMeta {
+         return this.apiVersion.getVersionString();
+     }
+ 
+-    // Folia start
+-    @Override
+-    public boolean isFoliaSupported() {
+-        return this.foliaSupported;
+-    }
+-    // Folia end
++    // Fire start - Removed Folia supported.
++//    // Folia start
++//    @Override
++//    public boolean isFoliaSupported() {
++//        return this.foliaSupported;
++//    }
++//    // Folia end
++    // Fire end - Removed Folia supported.
+ 
+     @Override
+     public @NotNull List<String> getProvidedPlugins() {
+diff --git a/src/main/java/io/papermc/paper/plugin/provider/type/paper/PaperPluginProviderFactory.java b/src/main/java/io/papermc/paper/plugin/provider/type/paper/PaperPluginProviderFactory.java
+index 6369b13e1fcdbdb25dd9d6e4d3bffdedbee4f739..d4aef9fbd34984a5ff7280f7cd696b89086526c3 100644
+--- a/src/main/java/io/papermc/paper/plugin/provider/type/paper/PaperPluginProviderFactory.java
++++ b/src/main/java/io/papermc/paper/plugin/provider/type/paper/PaperPluginProviderFactory.java
+@@ -24,11 +24,13 @@ class PaperPluginProviderFactory implements PluginTypeFactory<PaperPluginParent,
+ 
+     @Override
+     public PaperPluginParent build(JarFile file, PaperPluginMeta configuration, Path source) {
+-        // Folia start - block plugins not marked as supported
+-        if (!configuration.isFoliaSupported()) {
+-            throw new RuntimeException("Could not load plugin '" + configuration.getDisplayName() + "' as it is not marked as supporting Folia!");
+-        }
+-        // Folia end - block plugins not marked as supported
++        // Fire start - Removed Folia supported.
++//        // Folia start - block plugins not marked as supported
++//        if (!configuration.isFoliaSupported()) {
++//            throw new RuntimeException("Could not load plugin '" + configuration.getDisplayName() + "' as it is not marked as supporting Folia!");
++//        }
++//        // Folia end - block plugins not marked as supported
++        // Fire end - Removed Folia supported.
+         Logger jul = PaperPluginLogger.getLogger(configuration);
+         ComponentLogger logger = ComponentLogger.logger(jul.getName());
+         PluginProviderContext context = PluginProviderContextImpl.create(configuration, logger, source);
+diff --git a/src/main/java/io/papermc/paper/plugin/provider/type/spigot/SpigotPluginProviderFactory.java b/src/main/java/io/papermc/paper/plugin/provider/type/spigot/SpigotPluginProviderFactory.java
+index 276461c70d383709d5420f050e5d409dda3dfd6e..38f32c4b58463573cf33308ea6fa692d2b8f620e 100644
+--- a/src/main/java/io/papermc/paper/plugin/provider/type/spigot/SpigotPluginProviderFactory.java
++++ b/src/main/java/io/papermc/paper/plugin/provider/type/spigot/SpigotPluginProviderFactory.java
+@@ -35,11 +35,13 @@ class SpigotPluginProviderFactory implements PluginTypeFactory<SpigotPluginProvi
+ 
+     @Override
+     public SpigotPluginProvider build(JarFile file, PluginDescriptionFile configuration, Path source) throws InvalidDescriptionException {
+-        // Folia start - block plugins not marked as supported
+-        if (!configuration.isFoliaSupported()) {
+-            throw new RuntimeException("Could not load plugin '" + configuration.getDisplayName() + "' as it is not marked as supporting Folia!");
+-        }
+-        // Folia end - block plugins not marked as supported
++        // Fire start - Removed Folia supported.
++//        // Folia start - block plugins not marked as supported
++//        if (!configuration.isFoliaSupported()) {
++//            throw new RuntimeException("Could not load plugin '" + configuration.getDisplayName() + "' as it is not marked as supporting Folia!");
++//        }
++//        // Folia end - block plugins not marked as supported
++        // Fire end - Removed Folia supported.
+         // Copied from SimplePluginManager#loadPlugins
+         // Spigot doesn't validate the name when the config is created, and instead when the plugin is loaded.
+         // Paper plugin configuration will do these checks in config serializer instead of when this is created.
+diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
+index 7948267b6b91100a2fd2dcb24817037c75f6953c..1d8d0efcc49ce75ea693c9c17ed08eda5997ca81 100644
+--- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
++++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
+@@ -375,11 +375,13 @@ public final class CraftMagicNumbers implements UnsafeValues {
+             throw new InvalidPluginException("Unsupported API version " + pdf.getAPIVersion());
+         }
+ 
+-        // Folia start - block plugins not marked as supported
+-        if (!pdf.isFoliaSupported()) {
+-            throw new InvalidPluginException("Plugin " + pdf.getFullName() + " is not marked as supporting regionised multithreading");
+-        }
+-        // Folia end - block plugins not marked as supported
++        // Fire start - Removed Folia supported.
++//        // Folia start - block plugins not marked as supported
++//        if (!pdf.isFoliaSupported()) {
++//            throw new InvalidPluginException("Plugin " + pdf.getFullName() + " is not marked as supporting regionised multithreading");
++//        }
++//        // Folia end - block plugins not marked as supported
++        // Fire end - Removed Folia supported.
+ 
+         if (toCheck.isOlderThan(minimumVersion)) {
+             // Older than supported
+diff --git a/src/test/java/io/papermc/paper/plugin/TestPluginMeta.java b/src/test/java/io/papermc/paper/plugin/TestPluginMeta.java
+index db9285c2ff0c805f5d9564b6e8520c33ea5bb65a..cb0ce8d3c2df29bf6cf461a6bc77ece5b52a8fd7 100644
+--- a/src/test/java/io/papermc/paper/plugin/TestPluginMeta.java
++++ b/src/test/java/io/papermc/paper/plugin/TestPluginMeta.java
+@@ -20,12 +20,14 @@ public class TestPluginMeta implements PluginMeta {
+         this.identifier = identifier;
+     }
+ 
+-    // Folia start - region threading
+-    @Override
+-    public boolean isFoliaSupported() {
+-        return true;
+-    }
+-    // Folia end - region threading
++    // Fire start - Removed Folia supported.
++//    // Folia start - region threading
++//    @Override
++//    public boolean isFoliaSupported() {
++//        return true;
++//    }
++//    // Folia end - region threading
++    // Fire end - Removed Folia supported.
+ 
+     @Override
+     public @NotNull String getName() {
