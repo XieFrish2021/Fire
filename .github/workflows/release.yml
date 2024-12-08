@@ -17,6 +17,12 @@ jobs:
           distribution: 'temurin'
           architecture: x64
 
+      - name: settings git email
+        run: git config --global user.email "admin@fire.dev"
+
+      - name: settings git username
+        run: git config --global user.name "admin"
+
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
