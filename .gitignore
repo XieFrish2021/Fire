@@ -1,0 +1,10 @@
+.gradle/
+build/
+
+out/
+.idea/
+
+Fire-API/
+Fire-Server/
+paper-api-generator/
+run/
