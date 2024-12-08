@@ -32,6 +32,4 @@ jobs:
           token: ${{ secrets.TOKEN }}
           tag_name: 'Fire-1.21.1-R0.1-SNAPSHOT'
           name: 'Fire-1.21.1-R0.1-SNAPSHOT'
-          files:
-           - 'build/libs/fire-bundler-unspecified-mojmap.jar'
-           - 'build/libs/fire-paperclip-unspecified-mojmap.jar'
+          files: 'build/libs/fire-paperclip-unspecified-mojmap.jar'
